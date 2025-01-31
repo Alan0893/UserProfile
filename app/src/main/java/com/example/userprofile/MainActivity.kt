@@ -52,7 +52,6 @@ fun UserProfileScreen() {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Profile Picture
             Image(
                 painter = painterResource(id = R.drawable.profile_picture),
                 contentDescription = "Profile Picture",
@@ -82,14 +81,19 @@ fun UserProfileScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Button(
-                onClick = {
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar("Following $username")
-                    }
-                }
+            Row (
+                modifier = Modifier .fillMaxSize(),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Text(text = "Follow")
+                Button(
+                    onClick = {
+                        coroutineScope.launch {
+                            snackbarHostState.showSnackbar("Following $username")
+                        }
+                    }
+                ) {
+                    Text(text = "Follow")
+                }
             }
         }
     }
